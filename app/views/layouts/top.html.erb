@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title><%= page_title %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="bodyTop">
+  <!-- コンテナ開始 -->
+  <div class="container">
+    <!-- メインカラム開始 -->
+
+    <div align="center"><%= image_tag("logo.png", size: "838x367", alt: "Begi_taberu") %></div>
+
+    <div id="contnet">
+      <%= yield %>
+    </div>
+    <!-- メインカラム終了 -->
+    <!-- フッター開始 -->
+    <div id="footer">
+      <%= render "shared/footer" %>
+    </div>
+    <!-- フッター終了 -->
+  </div>
+  <!-- コンテナ終了 -->
+</body>
+</html>

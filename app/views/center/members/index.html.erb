@@ -1,0 +1,38 @@
+<%  page_title = "会員名簿" %>
+<h1><%=  page_title %></h1>
+
+<h1>Listing Members</h1>
+
+<table cellspacing="5">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Address</th>
+      <th>UserType</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+        <tr>
+          <td><%= member.user_name %></td>
+          <td><%= member.name %></td>
+          <td><%= member.email %></td>
+          <td><% if member.gender == 0 %>男<% else %>女<% end %></td>
+          <td><%= member.age %></td>
+          <td><%= member.address %></td>
+          <td><%= member.user_type %></td>
+          <td><%= link_to 'Show', member %></td>
+          <td><%= link_to 'Edit', edit_member_path(member) %></td>
+          <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+<br><br>
+  <%= will_paginate @members %>

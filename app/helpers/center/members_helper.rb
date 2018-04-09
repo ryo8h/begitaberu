@@ -1,0 +1,2 @@
+module Center::MembersHelper
+end

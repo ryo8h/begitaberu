@@ -1,0 +1,33 @@
+<% @page_title = "配送待ち商品リスト" %>
+
+<br>
+<%= link_to "← 戻る", foods_path %>
+<% if @order_details.present? %>
+<table>
+<tr>
+<% @cnt = 0 %>
+	<% @order_details.each do |order_detail| %>
+		<% if order_detail.reserve == false %>
+			<% @foods = Food.where(id: order_detail.food_id) %>
+			<% @foods.each do |food| %>
+				<% if @cnt == 5 %>
+					</tr><tr>
+				<% end %>
+				<td>
+					<div class="box_left">
+						<%= food_image_tag(food, width: 96, height: 96) %></br>
+						<%= food.name %></br>
+			   			<p>注文数：<%= order_detail.quantity %></p>
+			   			<p><%= order_detail.subtotal %>円</p>
+					</div>
+				</td>
+				<% @cnt += 1 %>
+			<% end %>
+		<% end %>
+	<% end %>
+	</table><br><br>
+	<%= will_paginate @order_details %>
+<% else %>
+<br><br><br><br>
+<h1>現在配送待ちの商品はありません</h1>
+<% end %>

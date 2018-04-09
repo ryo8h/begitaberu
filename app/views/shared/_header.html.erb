@@ -1,0 +1,12 @@
+
+<%= link_to image_tag("logo.png", size: "232x100", alt: "Begi_taberu"), foods_path %>
+<!--検索box -->
+
+
+<div class="searchWord">
+<%= form_tag :search_foods, method: :get do %>
+  <p><%= text_field_tag "q", params[:q] %>
+  <%= submit_tag "検索" %></p>
+</div>
+<% end %>
+

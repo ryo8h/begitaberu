@@ -1,0 +1,24 @@
+<% if flash[:delete] %><p class="alert"><%= flash[:delete] %></p><% end %>
+<% if @foods.present? %>
+<% @cnt = 0 %>
+
+<table>
+	<tr>
+	<% @foods.each do |food| %>
+		<% if @cnt == 5 %>
+			</tr>
+			<tr>	
+		<% end %>
+				<td>
+					<div class="box_left">
+						<%= link_to (food_image_tag food, width: 96, height: 96), food %></br>
+						<%= food.name %></br>
+		   				<p><%= food.price %>円</p>
+		  				<%= link_to "詳細", food %></br>
+					</div>
+				</td>
+		<% @cnt += 1 %>
+	<% end %>
+	</table><br><br>
+	<%= will_paginate @foods %>
+<% end %>

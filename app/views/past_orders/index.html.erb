@@ -1,0 +1,37 @@
+<% @page_title = "注文履歴" %>
+
+<br>
+
+<%= link_to "← 戻る", foods_path %>
+<% if @past_order.present? %>
+<table cellspacing="10">
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>quantity</th>
+      <th>subtotal</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_details = OrderDetail.where(order_id: @past_order.order_id)
+      .paginate(page: params[:page], per_page: 10) %>
+    <% @order_details.each do |order_detail| %>
+    	<% if order_detail.reserve == true %>
+    		<% food = Food.find(order_detail.food_id) %>
+     		<tr>
+     			<td><%= link_to food.name, food_path(food.id) %></td>
+       		<td><%= order_detail.quantity %></td>
+       		<td><%= order_detail.subtotal %></td>
+      	</tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br><br>
+  <%= will_paginate @order_details %>
+
+<% else %>
+	<br><br><br><br>
+	<h1>注文履歴はありません</h1>
+<% end %>

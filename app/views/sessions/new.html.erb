@@ -1,0 +1,21 @@
+<% @page_title = "ログイン" %>
+<h1>ログインページ</h1>
+<% if flash[:danger] %><p class="alert"><%= flash[:danger] %></p><% end %>
+
+<div class="row">
+	<div class="a">
+		<%= form_for(:session, url: login_path) do |f| %>
+
+			<div>
+			ユーザネーム<br>
+			<%= f.text_field :user_name %>
+			</div><br><div>
+			パスワード<br>
+			<%= f.password_field :password %>
+			</div><br>
+			<%= f.submit "Log in" %>
+		<% end %>
+		<br><br>
+		<p><%= link_to "初めての方はこちら", new_member_path %></p>
+	</div>
+</div>

@@ -1,0 +1,64 @@
+<%= form_for(@member) do |f| %>
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% @member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    ユーザネーム<br>
+    <%= f.text_field :user_name %>
+  </div><br>
+  <div class="field">
+    苗字<br>
+    <%= f.text_field :name %>
+  </div><br>
+  <div class="field">
+    パスワード<br>
+    <%= f.text_field :password %>
+  </div><br>
+  <div class="field">
+    メールアドレス<br>
+    <%= f.text_field :email %>
+  </div><br>
+  <div class="field">
+    男
+    <%= f.radio_button :gender, 0 %>
+    女
+    <%= f.radio_button :gender, 1 %>
+  </div><br>
+  <div class="field">
+    年齢<br>
+    <%= f.number_field :age %>
+  </div><br>
+  <div class="field">
+    お住まいの県<br>
+    <%= f.text_field :address %>
+  </div>
+
+<% if false %>
+
+  <div class="field">
+    <%= f.label :center_id %><br>
+    <%= f.number_field :center_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_type %><br>
+    <%= f.check_box :user_type %>
+  </div>
+
+<% end %>
+
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+

@@ -1,0 +1,49 @@
+<% @page_title = "ショッピングカート" %>
+<% if flash[:justorder] %><p class="alert"><%= flash[:justorder] %></p><% end %>
+<br>
+<%= link_to "← 戻る", foods_path %>
+<% if @cart_details.present? %>
+<% @cnt = 0 %>
+<table>
+	<tr>
+	<% @cart_details.each do |cart_detail| %>
+		<% @foods = Food.where(id: cart_detail.food_id) %>
+		<% @foods.each do |food| %>
+			<% if @cnt == 5 %>
+			</tr>
+			<tr>	
+			<% end %>
+			<td>
+			<div class="clearfix box_wrap">
+				<div class="box_left">
+					<%= food_image_tag(food, width: 96, height: 96) %></br>
+					<%= food.name %></br>
+
+					<%= form_tag({:controller => 'orders', :action => 'create'}) do %>
+
+			   			<p><%= food.price %>円 
+			   			<%= select_tag 'quantity', options_for_select(1..food.stock) %>
+			   			</p>
+
+			   			<%= hidden_field_tag("cart_detail_id", cart_detail.id) %>
+			   			<%= hidden_field_tag("food_id", food.id) %>
+
+			   			<% if food.stock <= 0 %>
+			   				...在庫切れ...
+				   		<% else %>
+				   			<%= submit_tag "購入確定" %>
+				   		<% end %>
+				   		
+				   	<% end %>
+				</div>
+			</div>
+			</td>
+		<% end %>
+		<% @cnt += 1 %>
+	<% end %>
+</table><br><br>
+	<%= will_paginate @cart_details %>
+<% else %>
+<br><br><br><br>
+<h1>現在カートには何も入っていません</h1>
+<% end %>

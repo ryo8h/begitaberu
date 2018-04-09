@@ -1,0 +1,276 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+/* --- 追加 --- */
+div.topbtn {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  background: #84d6d6;
+  font-size: 100%;
+  margin: 0px auto 20px;
+}
+
+div.topbtn h2{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 100%;
+  text-align: center;
+}
+
+
+/* --- 全体の背景・テキスト --- */
+body {
+margin: 0;
+padding: 0;
+background-color: #ffffff; /* ページの背景色 */
+color: #000000; /* 全体の文字色 */
+font-size: 100%; /* 全体の文字サイズ */
+}
+
+/* --- 全体の背景・テキスト(トップ/ログイン/登録編集etc) --- */
+body.bodyTop {
+margin: 0;
+padding: 0;
+background-color: #cbf2cb; /* ページの背景色 #F6FBF6 */
+color: #212222; /* 全体の文字色 */
+font-size: 100%; /* 全体の文字サイズ */
+}
+
+
+/* --- 全体のリンクテキスト --- */
+a:link { color: #212222; text-decoration: none }
+a:visited { color: #212222;　text-decoration: none }
+a:hover { color: #90877C;　text-decoration: none }
+a:active { color: #90877C;　text-decoration: none }
+
+
+/* --- コンテナ --- */
+#container {
+width: 96%; /* ページの幅 */
+height: 100%;
+margin: 0 auto; /* センタリング */
+background-color: #ffffff; /* メインカラムの背景色 */
+}
+
+
+/* --- ヘッダ --- */
+#header {
+background-color: #cbf2cb; /* ヘッダの背景色 */
+height: 150px;
+border-bottom: 1px solid green;
+}
+#header p {
+margin: 2px 0px 0px 10px;
+}
+
+
+/*----ヘッダー案その2-----*/
+
+/*#header {
+padding: 20px 0 40px 10px;
+background-color: #55af28; /* ヘッダの背景色 */
+/*}  */
+
+
+/* --- サイドバー --- */
+#sidebar {
+background-color: #cbf2cb;
+float: left;
+width: 140px; /* サイドバーの幅 */
+padding: 20px 0 40px 10px;
+margin-right: 30px;
+}
+
+
+/* --- サイドバー案その2 --- */
+/*#nav {
+float: left;
+width: 200px; /* サイドバーの幅 */
+/*padding: 20px 0 40px 0;
+} */
+
+
+/* --- メインカラム --- */
+#content {
+float: left;
+width: 580px; /* メインカラムの幅 */
+}
+
+/* --- メインカラム案その2 --- */
+/*#content {
+margin-left: 200px; /* メインカラムの左マージン（サイドバーの幅以上） */
+/*padding: 20px 0 450px 0;
+}*/
+
+
+#content table {
+margin: 0 90px;
+}
+
+#detail {
+width: 50px;
+margin-left: auto;
+}
+
+#submit {
+float: left;
+}
+
+
+/* --- 検索ボックス --- */
+div.searchWord {
+text-align: right;
+}
+
+/* --- テキストボックス --- */
+form.searchWord input.textBox {
+width: 298px; /* テキストボックスの幅 */
+margin: 0 4px 0 5px; /* テキストボックスのマージン（上右下左） */
+padding: 0;
+background-color: #ffffff; /* テキストボックスの背景色 */
+border: none; /* テキストボックスの境界線（なし） */
+color: #000000;
+}
+
+/* --- ボタン --- */
+form.searchWord input.btn {
+width: 80px; /* ボタンの幅 */
+height: 2.5em; /* ボタンの高さ */
+padding: 0;
+background: #c08000 url(btn05.gif); /* ボタンの背景 */
+border: 1px #c08000 inset; /* ボタンの境界線 */
+font-weight: bold;
+color: #000000;
+letter-spacing: 0.3em; /* 文字間のスペース */
+}
+
+
+
+/* 食品を並べる構造に関する記述 */
+.list {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.list-box {
+  display: table-cell;
+  padding: 5px;
+  vertical-align: up;
+}
+.list-img {
+  max-height: 70px;
+  overflow: hidden;
+  text-align: left;
+}
+.list-img img {
+  width: 100px;
+}
+ 
+/* 中身のデザインに関する記述 */
+.list-cat {
+  background-color: #3ae;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 10px;
+  padding: 0 5px;
+}
+.list-date {
+  color: #aaa;
+  font-size: 10px;
+  margin-left: 10px;
+}
+.list-text h2 {
+  color: #000;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-right: 10px;
+}
+
+
+
+/* --- ページャー --- */
+
+#pager {
+    overflow: hidden;
+	
+}
+ 
+#pager ul {
+    list-style: none;
+    position: relative;
+    left: 50%;
+    float: left;
+}
+ 
+#pager ul li {
+    margin: 0 1px;
+    position: relative;
+    left: -50%;
+    float: left;
+}
+ 
+#pager ul li span,
+#pager ul li a {
+    display: block;
+    font-size: 16px;
+    padding: 0.6em 1em;
+    border-radius: 3px;
+}
+ 
+#pager ul li a {
+    background: #CCC3A1;
+    color: #000;
+    text-decoration: none;
+}
+ 
+#pager ul li a:hover {
+    background: #333;
+    color: #FFF;
+}
+
+/* --- フッタ --- */
+#footer {
+clear: left; /* フロートのクリア */
+width: 100%;
+background-color: #CCC3A1; /* フッタの背景色 */
+}
+
+/* フロート */
+.box_left {
+	margin-left: 10px;
+	float: left;
+}
+
+.box_wrap {
+	height: auto;
+	border: 1px;
+}
+
+.clearfix:after {
+	display: block;
+	clear: both;
+}
+
+p.alert {
+  margin-left: 10px;
+  color: red;
+}

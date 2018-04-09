@@ -1,0 +1,32 @@
+<div id="member">
+<% if current_member.user_type %>
+[管理者]<br>
+<% end %>
+<%= current_member.name %> さん<br><br>
+
+<a><%= link_to "(ログアウト)", logout_path, method: :delete, data: {confirm: "ログアウトしますか？"} %></a>
+</div>
+
+--------------------
+
+<div id="content">
+<p>・<a><%= link_to "マイアカウント", current_member %></a></p>
+<p>・<a><%= link_to "高度な検索", "" %></a></p>
+<p>・<a><%= link_to "カート", carts_path %></a></p>
+<p>・<a><%= link_to "配送待ち商品", orders_path %></a></p>
+<p>・<a><%= link_to "注文履歴", past_orders_path %></a></p><br><br><br><br><br><br>
+</div>
+
+
+<% if current_member.user_type %>
+
+-----[管理者]-----
+
+<p>・<a><%= link_to "顧客リスト", center_members_path %></a></p>
+<p>・<a><%= link_to "配送", center_orders_path %></a></p>
+
+<% if false %>
+<p>・<a><%= link_to "商品登録", new_center_food_path %></a></p>
+<% end %>
+
+<% end %>

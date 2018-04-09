@@ -1,0 +1,71 @@
+<% @page_title = "商品の詳細" %>
+<% if flash[:addcart] %><p class="alert"><%= flash[:addcart] %></p><% end %>
+<br>
+<%= link_to "← 戻る", foods_path %>
+<table class="attr">
+	<tr>
+		<th>画像</th>
+		<td><%= food_image_tag @food, width: 96, height: 96 %></td>
+	</tr>
+	<tr>
+		<th width="150">商品番号</th>
+		<td><%= @food.id %></td>
+	</tr>
+	<tr>
+		<th>商品名</th>
+		<td><%= @food.name %></td>
+	</tr>
+	<tr>
+		<th>価格</th>
+		<td><%= @food.price %>円</td>
+	</tr>
+	<tr>
+		<th>詳細</th>
+		<td><%= @food.detail %></td>
+	</tr>
+	<tr>
+		<th>カテゴリー</th>
+		<td>カテゴリー</td>
+	</tr>
+	<tr>
+		<th>生産地</th>
+		<td><%= @food.locality %></td>
+	</tr>
+	<tr>
+		<th>生産者</th>
+		<td><%= @food.producer %></td>
+	</tr>
+	<tr>
+		<th>収穫日</th>
+		<td><%= @food.havest_date %></td>
+	</tr>
+	<tr>
+		<th>在庫</th>
+		<% if @food.stock >= 0 %>
+			<td><%= @food.stock %></td>
+		<% else %>
+			<td>×</td>
+		<% end %>
+	</tr>
+	<tr>
+		<th></th>
+		<td>
+		<% session[:food_id] = @food.id %>
+		<% if @food.stock <= 0 %>
+		---在庫切れ---
+		<% else %>
+			<%= button_to "カートに入れる", new_cart_path, :method => :get %>
+		<% end %>
+		</td>
+	</tr>
+
+	<% if current_member.user_type == true%>
+	<tr>
+	<th></th>
+	<td><%= link_to "情報更新",  edit_center_food_path(@food) %>｜
+	<%= link_to "削除",  center_food_path(@food), method: :delete, data: { confirm: 'Are you sure?' }  %>
+	</td>
+	</tr>
+	<% end %>
+</table>
+</div>

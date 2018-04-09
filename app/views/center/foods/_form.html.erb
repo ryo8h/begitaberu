@@ -1,0 +1,82 @@
+<%= form_for(@food) do |f| %>
+  <% if @food.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@food.errors.count, "error") %> prohibited this food from being saved:</h2>
+
+      <ul>
+      <% @food.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+<table class="attr">
+  <%= form.fields_for :image do |imgf| %>
+  <tr>
+    <th><%= imgf.label :uploaded_image %></th>
+    <td>
+      <%= imgf.file_field :uploaded_image %>
+      <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
+      <div>
+        <%= member_image_tag @member, width: 60 %>
+        <%= imgf.check_box :_destroy %>
+        <%= imgf.label :_destroy %>
+        <%= imgf.hidden_field :id %>
+      </div>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+
+
+  <div class="field">
+    商品名<br>
+    <%= f.text_field :name %>
+  </div><br>
+  <div class="field">
+    値段<br>
+    <%= f.number_field :price %>
+  </div><br>
+  <div class="field">
+    売り始め<br>
+    <%= f.date_select :havest_date, start_year: 2017, end_year: Time.now.year,
+  	 use_month_numbers: true %>
+  </div><br>
+  <div class="field">
+    売り終わり<br>
+    <%= f.date_select :havest_date, start_year: 2017, end_year: Time.now.year,
+  	 use_month_numbers: true %>
+  </div><br>
+  <div class="field">
+  	個数<br>
+  	<%= f.number_field :stock %>
+  </div><br>
+  <div class="field">
+    産地(都道府県)<br>
+    <%= f.text_field :locality %>
+  </div><br>
+  <div class="field">
+    商品説明<br>
+    <%= f.text_area :detail, cols: 40, rows: 3 %>
+  </div>
+  <div class="field">
+  	生産者<br>
+  	<%= f.text_field :producer %>
+  </div><br>
+  <div class="field">
+  	収穫日<br>
+  	<%= f.date_select :havest_date, start_year: 2017, end_year: Time.now.year,
+  	 use_month_numbers: true %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
